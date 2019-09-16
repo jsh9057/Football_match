@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.sku.dao.TeamMapper">
+	
+    <select id="getTeambycall" parameterType="String"   resultType="team">
+        SELECT t_num FROM team where t_call= #{t_call}
+    </select>
+    
+    <insert id="addTeam" parameterType="Team">
+    	INSERT INTO team (t_call,t_pwd,t_name,t_leader,t_place,t_time,t_power)
+    	values (#{t_call},#{t_pwd},#{t_name},#{t_leader},#{t_place},#{t_time},#{t_power})
+    </insert>
+    
+    <select id="login" parameterType="String"   resultType="java.lang.Integer">
+        SELECT t_num FROM team where t_call=#{t_call} AND t_pwd=#{t_pwd}
+    </select>
+</mapper>
